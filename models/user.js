@@ -11,39 +11,14 @@ module.exports = (sequelize, DataTypes) => {
       User.hasMany(models.Todo, {
         foreignKey: "userId",
       });
-    }
-
-    static createUser({ firstName, lastName, email, password }) {
-      return this.create({ firstName, lastName, email, password });
+      // define association here
     }
   }
   User.init(
     {
-      firstName: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        validate: {
-          notNull: {
-            msg: "First name is required",
-          },
-          notEmpty: {
-            msg: "First name is required",
-          },
-        },
-      },
+      firstName: DataTypes.STRING,
       lastName: DataTypes.STRING,
-      email: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        validate: {
-          notNull: {
-            msg: "Email is required",
-          },
-          notEmpty: {
-            msg: "Email is required",
-          },
-        },
-      },
+      email: DataTypes.STRING,
       password: DataTypes.STRING,
     },
     {
